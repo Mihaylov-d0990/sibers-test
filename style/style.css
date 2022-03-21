@@ -33,6 +33,7 @@ body {
 
 .head__controller {
     display: flex;
+    column-gap: 20px;
 }
 
 /* main */
@@ -51,18 +52,44 @@ body {
 
 .main__table {
     width: 100%;
+    display: table;
 }
 
-.main__table th, .main__table td {
+.main__table .main__header-row {
+    display: table-row;
+}
+
+.main__table .main__header-row .main__cell {
+    display: table-cell;
+}
+
+.main__table > a {
+    display: table-row;
+    text-decoration: none;
+}
+
+.main__table > a,
+.main__table > a:active,
+.main__table > a:hover {
+    color: black;
+    font-size: 18px;
+}
+
+.main__table > a > div {
+    display: table-cell;
+}
+
+.main__table .main__cell {
     padding: 7px 0px;
 }
 
-.main__table th {
-    text-align: start;
+.main__table > a:not(:nth-child(1)) {
+    transition: 0.3s;
+    cursor: pointer;
 }
 
-.main__table table {
-    width: 100%;
+.main__table > a:not(:nth-child(1)):hover {
+    background-color: rgba(255, 0, 0, 0.2);
 }
 
 .main__router {
@@ -113,6 +140,39 @@ body {
     display: flex;
     align-items: center;
     column-gap: 10px;
+}
+
+/* user */
+
+.user {
+    flex: 1 0 auto;
+}
+
+.user__content {
+    padding: 20px 0px;
+    box-sizing: border-box;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.user__info {
+    display: flex;
+    column-gap: 40px;
+}
+
+.user__column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.user__column:first-child {
+    align-items: flex-end;
+}
+
+.user__title {
+    font-weight: 600;
 }
 
 /* foot */

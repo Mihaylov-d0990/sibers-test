@@ -10,23 +10,32 @@
     $password_error         = (strlen(trim($_POST['password'])) != 0) || !isset($_POST['password']) ? "" : "Password field is empty";
  
     if (isset($_POST['login']) && isset($_POST['password'])) {
+
         $login = $_POST['login'];
         $password = md5($_POST['password']);
         $result = $connection->query(
+
             "SELECT * FROM `user` 
             WHERE `login` = '$login' AND `password` = '$password'");
         
         if (mysqli_num_rows($result) == 1) {
+
             if (isset($_POST['signed'])) {
+
                 setcookie("login", $login, time() + 2592e4);
                 setcookie("password", $password, time() + 2592e4);
+
             } else {
+
                 $_SESSION['login']    = $login;
                 $_SESSION['password'] = $password;
+                
             }
+
             unset($_SESSION['s_login']);
             unset($_SESSION['signed']);
             header("Location: index.php");
+            
         } else {
             $user_error = "User is not exist";
         }

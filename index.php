@@ -7,20 +7,22 @@
         <div class="main__content">
             <?php 
                 if (!$content_unavailable) {
+
                     $_GET['page'] = isset($_GET['page']) ? $_GET['page'] : 1;
                     $_GET['sort'] = isset($_GET['sort']) ? $_GET['sort'] : 0;
                     $currentPage = $_GET['page'];
-                    echo "<table class='main__table'>
-                            <tr>
-                                <th class='main__cell'><a href='?sort=0&page=$currentPage'>ID</a></th>
-                                <th class='main__cell'><a href='?sort=1&page=$currentPage'>Name</a></th>
-                                <th class='main__cell'><a href='?sort=2&page=$currentPage'>Surname</a></th>
-                                <th class='main__cell'><a href='?sort=3&page=$currentPage'>Login</a></th>
-                                <th class='main__cell'><a href='?sort=4&page=$currentPage'>Password</a></th>
-                                <th class='main__cell'><a href='?sort=5&page=$currentPage'>Birthdate</a></th>
-                                <th class='main__cell'><a href='?sort=6&page=$currentPage'>Sex</a></th>
-                                <th class='main__cell'><a href='?sort=7&page=$currentPage'>Type</a></th>
-                            </tr>";
+
+                    echo "<div class='main__table'>
+                            <div class='main__header-row'>
+                                <div class='main__cell'><a href='?sort=0&page=$currentPage'>ID</a></div>
+                                <div class='main__cell'><a href='?sort=1&page=$currentPage'>Name</a></div>
+                                <div class='main__cell'><a href='?sort=2&page=$currentPage'>Surname</a></div>
+                                <div class='main__cell'><a href='?sort=3&page=$currentPage'>Login</a></div>
+                                <div class='main__cell'><a href='?sort=4&page=$currentPage'>Password</a></div>
+                                <div class='main__cell'><a href='?sort=5&page=$currentPage'>Birthdate</a></div>
+                                <div class='main__cell'><a href='?sort=6&page=$currentPage'>Sex</a></div>
+                                <div class='main__cell'><a href='?sort=7&page=$currentPage'>Type</a></div>
+                            </div>";
 
                     $users;
                     $entryQuantity  = 20;
@@ -52,13 +54,14 @@
 
                         $rowCells = "";
                         foreach($row as $key => $value) {
-                            $rowCells = $rowCells . "<td class='main__cell'>$value</td>";
+                            $rowCells = $rowCells . "<div class='main__cell'>$value</div>";
                         }
                         
-                        echo "<tr>$rowCells</tr>";
+                        $userId = $row['id'];
+                        echo "<a href='user.php?user=$userId'>$rowCells</a>";
                     }
 
-                    echo "</table>";
+                    echo "</div>";
 
                     $countUsers = $connection->query("SELECT COUNT(*) AS count FROM `user`");
                     $countUsers = ceil($countUsers->fetch_assoc()['count'] / $entryQuantity);
@@ -78,6 +81,7 @@
                     $routes = $currentPage < $countUsers - 2 ? $routes . "<a class='main__route-right' href='?page=$countUsers'>$countUsers</a>" : $routes;
 
                     echo "<div class='main__router'>$routes</div>";
+                    
                 } else {
                     echo "<strong>Content is unavailable.<br/>
                             You need to log in as an administrator</strong>";      

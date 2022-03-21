@@ -52,7 +52,13 @@
                     <div class="head__controller">
                         <?php 
                             if ($user_signed) {
-                                echo '<form action="#" method="POST">
+                                echo '
+                                    <div>
+                                        <a href="index.php">
+                                            <img src="images/profile.svg" />
+                                        </a>
+                                    </div>
+                                    <form action="#" method="POST">
                                         <input type="hidden" name="exit" />
                                         <input type="image" src="images/exit.svg" />
                                     </form>';
