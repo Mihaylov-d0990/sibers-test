@@ -50,20 +50,19 @@ body {
 }
 
 .main__table {
-    display: grid;
-    grid-column-gap: 10px;
-    grid-row-gap: 5px;
-    grid-template-columns: repeat(8, 1fr);
-    font-size: 18px;
+    width: 100%;
 }
 
-.main__cell:nth-child(n+9) {
-    transition: 0.3s;
-    cursor: pointer;
+.main__table th, .main__table td {
+    padding: 7px 0px;
 }
 
-.main__cell:nth-child(n+9):hover {
-    background-color: rgba(255, 0, 0, 0.3);
+.main__table th {
+    text-align: start;
+}
+
+.main__table table {
+    width: 100%;
 }
 
 .main__router {

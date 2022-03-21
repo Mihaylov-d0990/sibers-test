@@ -7,23 +7,32 @@
         <div class="main__content">
             <?php 
                 if (!$content_unavailable) {
-                    echo "<div class='main__table'>
-                            <div class='main__cell'>ID</div>
-                            <div class='main__cell'>Name</div>
-                            <div class='main__cell'>Surname</div>
-                            <div class='main__cell'>Login</div>
-                            <div class='main__cell'>Password</div>
-                            <div class='main__cell'>Birthdate</div>
-                            <div class='main__cell'>Sex</div>
-                            <div class='main__cell'>Type</div>";
+                    $_GET['page'] = isset($_GET['page']) ? $_GET['page'] : 1;
+                    $_GET['sort'] = isset($_GET['sort']) ? $_GET['sort'] : 0;
+                    $currentPage = $_GET['page'];
+                    echo "<table class='main__table'>
+                            <tr>
+                                <th class='main__cell'><a href='?sort=0&page=$currentPage'>ID</a></th>
+                                <th class='main__cell'><a href='?sort=1&page=$currentPage'>Name</a></th>
+                                <th class='main__cell'><a href='?sort=2&page=$currentPage'>Surname</a></th>
+                                <th class='main__cell'><a href='?sort=3&page=$currentPage'>Login</a></th>
+                                <th class='main__cell'><a href='?sort=4&page=$currentPage'>Password</a></th>
+                                <th class='main__cell'><a href='?sort=5&page=$currentPage'>Birthdate</a></th>
+                                <th class='main__cell'><a href='?sort=6&page=$currentPage'>Sex</a></th>
+                                <th class='main__cell'><a href='?sort=7&page=$currentPage'>Type</a></th>
+                            </tr>";
 
                     $users;
                     $entryQuantity  = 20;
                     $itemsFrom      = $_GET['page'] * $entryQuantity - $entryQuantity;
+                    $arr = array(0 => 'id', 1 => 'name', 2 => 'surname', 3 => 'login', 4 => 'password', 5 => 'birthdate', 6 => 'sex', 7 => 'user_type');
+                    $sortType = $arr[$_GET['sort']];
+
                     $users_query    = "SELECT user.id, user.name, user.surname, user.login, user.password, user.birthdate,
                                     sex.name AS sex, user_type.name AS type FROM `user`
                                     INNER JOIN sex ON sex.id = user.sex
                                     INNER JOIN user_type ON user_type.id = user.user_type
+                                    ORDER BY user.$sortType
                                     LIMIT $itemsFrom, $entryQuantity";
 
                     if (isset($_COOKIE['login']) && isset($_COOKIE['password'])) {
@@ -43,13 +52,13 @@
 
                         $rowCells = "";
                         foreach($row as $key => $value) {
-                            $rowCells = $rowCells . "<div class='main__cell'>$value</div>";
+                            $rowCells = $rowCells . "<td class='main__cell'>$value</td>";
                         }
                         
-                        echo $rowCells;
+                        echo "<tr>$rowCells</tr>";
                     }
 
-                    echo "</div>";
+                    echo "</table>";
 
                     $countUsers = $connection->query("SELECT COUNT(*) AS count FROM `user`");
                     $countUsers = ceil($countUsers->fetch_assoc()['count'] / $entryQuantity);
