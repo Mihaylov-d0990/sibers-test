@@ -8,3 +8,4 @@
         </div>
     </body>
 </html>
+<?php $connection->close(); ?>

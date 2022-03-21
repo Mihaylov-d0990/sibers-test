@@ -24,12 +24,76 @@ body {
     flex: 0 0 auto;
 }
 
+.head__content {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.head__controller {
+    display: flex;
+}
+
 /* main */
 
 .main {
     flex: 1 0 auto;
 }
 
+.main__content {
+    padding: 20px 0px;
+}
+
+.main__table {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 5px;
+    grid-template-columns: repeat(8, 1fr);
+    font-size: 18px;
+}
+
+.main__cell:nth-child(n+9) {
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.main__cell:nth-child(n+9):hover {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+/* login */
+
+.login {
+    flex: 1 0 auto;
+}
+
+.login__content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__form {
+    width: 300px;
+}
+
+.login__form form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.login__form form input[type=submit] {
+    cursor: pointer;
+}
+
+.login__checkbox {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
 
 /* foot */
 
@@ -47,5 +111,6 @@ body {
 
 .container {
     max-width: 1100px;
+    height: 100%;
     margin: 0 auto;
 }
