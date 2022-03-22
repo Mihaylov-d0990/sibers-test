@@ -54,8 +54,7 @@
         unset($_SESSION['password'] );
         unset($_SESSION['birthdate']);
         unset($_SESSION['sex']);
-        unset($_SESSION['user_type']);
-    
+        unset($_SESSION['user_type']);  
     }
 
 ?>

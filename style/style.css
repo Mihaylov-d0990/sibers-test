@@ -173,6 +173,10 @@ body {
     align-items: flex-end;
 }
 
+.user__column input {
+    font-size: 15px;
+}
+
 .user__title {
     font-weight: 600;
 }
