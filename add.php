@@ -5,7 +5,7 @@
 
     // Authentication verification
 
-    if (!$user_signed) header("Location: login.php");   
+    if (!$user_signed) header("Location: $root_url");   
 
     // A function that creates options for select 
 

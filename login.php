@@ -40,7 +40,7 @@
 
             unset($_SESSION['s_login']);
             unset($_SESSION['signed']);
-            header("Location: index.php");
+            header("Location: $root_url");
             
         } else {
             $user_error = "User is not exist";

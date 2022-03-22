@@ -5,7 +5,7 @@
 
     // Authentication verification
 
-    if (!$user_signed) header("Location: login.php");   
+    if (!$user_signed) header("Location: $root_url");   
 ?>
 <div class="main">
     <div class="container">

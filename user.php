@@ -5,7 +5,7 @@
 
     // Authentication verification
 
-    if (!$user_signed) header("Location: login.php"); 
+    if (!$user_signed) header("Location: $root_url"); 
 
     // A function that creates options for select 
 
@@ -17,7 +17,7 @@
 
         $user_id = $_GET['user'];
         $connection->query("DELETE FROM user WHERE id = '$user_id'");
-        header("Location: index.php");
+        header("Location: $root_url");
 
     } 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 21 2022 г., 15:53
+-- Время создания: Мар 22 2022 г., 13:34
 -- Версия сервера: 10.2.38-MariaDB
 -- Версия PHP: 7.4.27
 
@@ -63,19 +63,13 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `surname`, `login`, `password`, `birthdate`, `sex`, `user_type`) VALUES
 (1, 'Danila', 'Mihaylove', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2001-11-16', 1, 1),
-(2, 'UserName0', 'UserSurname0', 'user0', '3d517fe6ebab7b8cfcf98db6259c8a59', '2022-03-21', 1, 2),
-(3, 'UserName1', 'UserSurname1', 'user1', '24c9e15e52afc47c225b757e7bee1f9d', '2022-03-21', 1, 2),
-(4, 'UserName2', 'UserSurname2', 'user2', '7e58d63b60197ceb55a1c487989a3720', '2022-03-21', 1, 2),
-(5, 'UserName3', 'UserSurname3', 'user3', '92877af70a45fd6a2ed7fe81e1236b78', '2022-03-21', 1, 2),
-(6, 'UserName4', 'UserSurname4', 'user4', '3f02ebe3d7929b091e3d8ccfde2f3bc6', '2022-03-21', 1, 2),
-(7, 'UserName5', 'UserSurname5', 'user5', '0a791842f52a0acfbb3a783378c066b8', '2022-03-21', 1, 2),
-(8, 'UserName6', 'UserSurname6', 'user6', 'affec3b64cf90492377a8114c86fc093', '2022-03-21', 1, 2),
+(2, 'UserName0', 'UserSurname0', 'user0000', '93a9e5baa37535b7a8d30f14c53169cb', '2022-03-21', 1, 2),
+(8, 'UserName6', 'UserSurname6', 'user6', 'affec3b64cf90492377a8114c86fc093', '2022-03-21', 2, 2),
 (9, 'UserName7', 'UserSurname7', 'user7', '3e0469fb134991f8f75a2760e409c6ed', '2022-03-21', 1, 2),
 (10, 'UserName8', 'UserSurname8', 'user8', '7668f673d5669995175ef91b5d171945', '2022-03-21', 1, 2),
-(11, 'UserName9', 'UserSurname9', 'user9', '8808a13b854c2563da1a5f6cb2130868', '2022-03-21', 1, 2),
-(12, 'UserName10', 'UserSurname10', 'user10', '990d67a9f94696b1abe2dccf06900322', '2022-03-21', 1, 2),
+(12, 'UserName10', 'UserSurname101', 'user111', '622a717b2ee12cf1f1ce229bbed59e7b', '2022-03-10', 2, 2),
 (13, 'UserName11', 'UserSurname11', 'user11', '03aa1a0b0375b0461c1b8f35b234e67a', '2022-03-21', 1, 2),
-(14, 'UserName12', 'UserSurname12', 'user12', 'd781eaae8248db6ce1a7b82e58e60435', '2022-03-21', 1, 2),
+(14, 'UserName1000', 'UserSurname1000', 'user1000', 'e1d3b2fc3a15d9a9e6e0b0b2a0800c8e', '2022-02-22', 2, 2),
 (15, 'UserName13', 'UserSurname13', 'user13', 'd09979d794a6ee60d836f884739f7196', '2022-03-21', 1, 2),
 (16, 'UserName14', 'UserSurname14', 'user14', 'ef06d5cbf35386ff2203d186eeff7923', '2022-03-21', 1, 2),
 (17, 'UserName15', 'UserSurname15', 'user15', '726dedc0d6788b05f486730edcc0e871', '2022-03-21', 1, 2),
@@ -162,7 +156,9 @@ INSERT INTO `user` (`id`, `name`, `surname`, `login`, `password`, `birthdate`, `
 (98, 'UserName96', 'UserSurname96', 'user96', '91d8d21d21d64d8890aae88a01537e24', '2022-03-21', 1, 2),
 (99, 'UserName97', 'UserSurname97', 'user97', 'b79fbe59e7c297447e5005b13814cd9f', '2022-03-21', 1, 2),
 (100, 'UserName98', 'UserSurname98', 'user98', '88c0f392517ad8ea55bb7643a67dcbeb', '2022-03-21', 1, 2),
-(101, 'UserName99', 'UserSurname99', 'user99', '485ddf8dd90940f69b2f2274af864ad3', '2022-03-21', 1, 2);
+(101, 'UserName99', 'UserSurname99', 'user99', '485ddf8dd90940f69b2f2274af864ad3', '2022-03-21', 1, 2),
+(102, 'Test', 'Test', 'Test111', '2d6e430b714452b28b09f63746478ed8', '2022-03-22', 2, 2),
+(103, 'Test111', 'Test111', 'Test', '2d6e430b714452b28b09f63746478ed8', '1111-11-11', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -224,7 +220,7 @@ ALTER TABLE `sex`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT для таблицы `user_type`
