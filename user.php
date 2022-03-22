@@ -1,6 +1,11 @@
 <?php
     require_once("components/head.php");
-    if (!$user_signed) header("Location: login.php");   
+    if (!$user_signed) header("Location: login.php"); 
+    if (isset($_POST['delete'])) {
+        $user_id = $_GET['user'];
+        $connection->query("DELETE FROM user WHERE id = '$user_id'");
+        header("Location: index.php");
+    }
 ?>
 <div class="user">
     <div class="container">
@@ -25,18 +30,22 @@
                 $u_birthdate = $result['birthdate'];
                 $u_sex = $result['sex'];
                 $u_type = $result['type'];
+            ?>
+
+            <div class='user__info'>
+                <div class='user__column'>
+                    <div class='user__title'>ID: </div>
+                    <div class='user__title'>Name: </div>
+                    <div class='user__title'>Surname: </div>
+                    <div class='user__title'>Login: </div>
+                    <div class='user__title'>Password: </div>
+                    <div class='user__title'>Birthdate: </div>
+                    <div class='user__title'>Sex: </div>
+                    <div class='user__title'>Type: </div>
+                </div>
+
+            <?php
                 echo "
-                <div class='user__info'>
-                    <div class='user__column'>
-                        <div class='user__title'>ID: </div>
-                        <div class='user__title'>Name: </div>
-                        <div class='user__title'>Surname: </div>
-                        <div class='user__title'>Login: </div>
-                        <div class='user__title'>Password: </div>
-                        <div class='user__title'>Birthdate: </div>
-                        <div class='user__title'>Sex: </div>
-                        <div class='user__title'>Type: </div>
-                    </div>
                     <div class='user__column'>
                         <div>$u_id</div>
                         <div>$u_name</div>
@@ -50,6 +59,9 @@
                 </div>
                 ";
             ?>
+            <form action='#' method='POST'>
+                <input type='submit' name='delete' value='Delete' />
+            </form>
         </div>
     </div>
 </div>
