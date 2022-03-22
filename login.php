@@ -1,24 +1,30 @@
 <?php
+    // Inserting the head component
+
     require_once("components/head.php");
 
     $_SESSION['s_login']    = $_POST['login'];
     $_SESSION['signed']     = $_POST['signed'];
+
+    // Checking for errors
 
     $error_message          = "";
     $user_error             = ""; 
     $login_error            = (strlen(trim($_POST['login'])) != 0) || !isset($_POST['login']) ? "" : "Login field is empty";
     $password_error         = (strlen(trim($_POST['password'])) != 0) || !isset($_POST['password']) ? "" : "Password field is empty";
  
+    // Authentication
+
     if (isset($_POST['login']) && isset($_POST['password'])) {
 
-        $login = $_POST['login'];
-        $password = md5($_POST['password']);
-        $result = $connection->query(
+        $result     = $connection->prepare("SELECT *, COUNT(*) AS count FROM `user` WHERE `login` = ? AND `password` = ?"); 
+        $result->bind_param('ss', $login, $password);
+        $login      = $_POST['login'];
+        $password   = md5($_POST['password']);
+        $result->execute();
+        $result     = $result->get_result();
 
-            "SELECT * FROM `user` 
-            WHERE `login` = '$login' AND `password` = '$password'");
-        
-        if (mysqli_num_rows($result) == 1) {
+        if ($result->fetch_array()['count'] == 1) {
 
             if (isset($_POST['signed'])) {
 
@@ -41,6 +47,8 @@
         }
     }
 
+    // Creating an error message
+
     $error_array = array($login_error, $password_error, $user_error);
     for ($i = 0; $i < count($error_array); $i++) {
         if (strlen($error_array[$i]) > 0) {
@@ -53,7 +61,11 @@
     <div class="container">
         <div class="login__content">
             <div class="login__form">
-                <div><?php echo $error_message; ?></div>
+                <div>
+                    <?php 
+                        echo $error_message; 
+                    ?>
+                </div>
                 <form action="login.php" method="POST">
                     <div class="login__field-title">
                         Login
@@ -76,5 +88,7 @@
 </div>
 
 <?php
+    // Inserting the foot component
+
     require_once("components/foot.php");
 ?>   
