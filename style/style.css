@@ -175,6 +175,26 @@ body {
     font-weight: 600;
 }
 
+.add {
+    flex: 1 0 auto;
+}
+
+.add__content {
+    padding: 40px 0px;
+    row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.add__form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 7px;
+}
+
 /* foot */
 
 .foot {

@@ -56,8 +56,9 @@
                         foreach($row as $key => $value) {
                             $rowCells = $rowCells . "<div class='main__cell'>$value</div>";
                         }
-                        
+
                         $userId = $row['id'];
+                  
                         echo "<a href='user.php?user=$userId'>$rowCells</a>";
                     }
 

@@ -58,6 +58,11 @@
                                             <img src="images/profile.svg" />
                                         </a>
                                     </div>
+                                    <div>
+                                        <a href="add.php">
+                                            <img src="images/add.svg" />
+                                        </a>
+                                    </div>
                                     <form action="#" method="POST">
                                         <input type="hidden" name="exit" />
                                         <input type="image" src="images/exit.svg" />
